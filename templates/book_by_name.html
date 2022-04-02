@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    
+
+    <form id="first_form" action="" method="POST" novalidate>
+        <h1>Search...</h1>
+
+        {{ form.hidden_tag() }}
+        {{ form.name.label }}
+        {{ form.name() }}
+
+        {% for error in form.name.errors %}
+            {{ error }}
+        {% endfor %}
+
+        <br/>
+
+        {{ form.submit() }}
+
+
+    </form>
+
+    {% if books %}
+        {% for book in books %}
+
+        <p>
+            <img src="{{ url_for('static', filename=book.photo) }}" />
+            <br/>
+            Price: {{ book["price"] }}
+            <br/>
+            Author: {{ book["author"] }}
+            <br/>
+            Stars Rating : {{ book ["stars"]}}
+            <br/>
+            Release Date: {{ book["release_date"] }}
+            <br/>
+            <a href="{{ url_for('add_to_cart', book_id=book['book_id']) }}" > Add to cart </a>
+        </p>
+        {% endfor %}
+
+
+    {% endif %}
+
+
+
+{% endblock %}

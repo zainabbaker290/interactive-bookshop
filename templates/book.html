@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    {% if book %}
+    
+
+        <h1> {{ book["name"] }}</h1>
+
+        <p>
+            <img src="{{ url_for('static', filename=book.photo) }}" />
+            <br/>
+            Price: {{ book["price"] }}
+            <br/>
+            Author: {{ book["author"] }}
+            <br/>
+            Stars Rating : {{ book ["stars"]}}
+            <br/>
+            Release Date: {{ book["release_date"] }}
+        </p>
+
+
+
+        <p>
+            <a href="{{ url_for('add_to_cart', book_id=book['book_id']) }}" > Add to cart </a>
+        </p>
+
+        <p>
+            <a href="{{ url_for('remove_from_cart', book_id=book['book_id']) }}" > Remove from cart</a>
+        </p>
+
+
+    {% else %}
+        <p>
+            error
+        </p>
+    {% endif %}
+
+
+{% endblock %}
+

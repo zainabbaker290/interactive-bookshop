@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    <h1> Book Reviews </h1>
+
+    
+
+    <table>
+        <caption><h2>Reviews</h2></caption>
+        {% for review in reviews %}
+            <tr>
+                <td>{{ review["book_name"] }}</td>
+                <td>{{ review["author"] }}</td>
+                <td>{{ review["stars"] }}</td>
+                <td> {{ review["review"] }}</td>
+            </tr>
+        {% endfor %}
+                
+    </table>
+
+
+    <form action="" method="POST" novalidate>
+
+
+        <h2> Submit a Review</h2>
+        {{ form.hidden_tag() }}
+
+        {{ form.book_name.label }}
+        {{ form.book_name() }}
+
+        {% for error in form.book_name.errors %}
+            {{ error }}
+        {% endfor %}   
+
+        <br>
+
+        {{ form.author.label }}
+        {{ form.author() }}
+
+        {% for error in form.author.errors %}
+            {{ error }}
+        {% endfor %}   
+
+        <br>
+
+
+        {{ form.stars.label }}
+        {{ form.stars() }}
+
+        <br>
+
+
+        {{ form.description.label }}
+        {{ form.description() }}
+
+        {% for error in form.description.errors %}
+            {{ error }}
+        {% endfor %}   
+
+        <br>
+
+        {{ form.submit }}
+
+        {{message}}
+
+    </form>
+
+
+
+
+
+
+
+
+{% endblock %}

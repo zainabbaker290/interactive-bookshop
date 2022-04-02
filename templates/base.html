@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang = "en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>
+        The Book Basement 
+    </title>
+    <link rel="stylesheet" href=" {{ url_for('static', filename='styles.css') }}"/>
+</head>
+
+<header>
+    <h1 id = "empty" >The Book Basement</h1>
+</header>
+
+
+
+<nav role="navigation">
+    <ul id="navbar">
+        <li><a href="{{ url_for('home') }}"><h2>home</h2></a></li>
+        <li><a href="{{ url_for('browse') }}"><h2>browse</h2></a>
+            <ul>
+                <li><a href="{{ url_for('book_by_name') }}"> Search Book By Name </a></li>
+            </ul>
+        </li>
+        <li><a href="{{ url_for('register') }}"><h2>register</h2></a>
+            <ul class="dropdown">
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                <li><a href="{{ url_for('can_change_password') }}">Change Password</a></li>
+                <li><a href="{{ url_for('delete_account') }}">Delete Account</a></li>
+            </ul>
+        </li>
+
+        <li><a href="{{ url_for('reviews') }}"><h2>reviews</h2></a>
+
+        </li>
+        <li><a href="{{ url_for('all_events') }}"><h2>events</h2></a>
+            <ul class ="dropdown">
+                <li><a href="{{ url_for('submit_event') }}"> Submit event </a></li>
+            </ul
+        ></li>
+        <li><a href="{{ url_for('cart') }}"><h2>cart</h2></a>
+            <ul class ="dropdown">
+                <li><a href="{{ url_for('checkout') }}">checkout</a></li>
+                <li><a href="{{ url_for('past_orders') }}">Past Orders</a></li>
+            </ul>
+        
+        </li>
+        {% if g.user %}
+            <li id = "nav"><h2>logged in as: {{ g.user }}</h2></li>
+            <li><a href="{{ url_for('logout') }}"><h2>Logout</h2></a></li>
+        {% else %}
+            <li id="nav"><h2>not logged in</h2></a></li>
+            <li> <a href="{{ url_for('login') }}"><h2>login</h2></a></li>
+        {% endif %}
+
+    </ul>
+
+</nav>
+
+
+<body>
+
+   {% block main_content %}
+   {% endblock %}
+
+
+</body>
+
+<footer>
+    All images are free of use from <a href="https://unsplash.com/"> unsplash.com </a> or are my own 
+</footer>
+</html>

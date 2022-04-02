@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    
+    <img src="{{ url_for('static', filename = 'rsz_11image1.jpg') }} " alt="inside the bookshop" />
+    <figcaption> The Book Basement </figcaption>
+
+    <p>
+        Welcome to The Book Basement. Here you will be able to browse and buy our books, read reviews and see our upcoming events.
+        If you would like to submit an event or review please create an account <a href="{{ url_for('register') }}" > here </a>
+    </p>
+
+
+
+
+{% endblock %}

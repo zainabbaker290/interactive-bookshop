@@ -1,0 +1,61 @@
+
+{% extends "base.html" %}
+
+{% block main_content %}
+    <h1>Cart Contents</h1>
+
+    
+    {% if cart %}
+        <table>
+
+
+            <tr>
+                <th>Name</th>
+                {% for book_id in cart %}
+                    <td>{{ names[book_id] }} </td>
+                {% endfor %}
+            </tr>
+
+            <tr>
+                <th>Quantity</th>
+                {% for book_id in cart %}
+                    <td>{{ cart[book_id] }} </td>
+                {% endfor %}
+            </tr>
+
+            <tr>
+                <th>Price Per Book</th>
+                {% for book_id in cart %}
+                    <td>{{ prices[book_id] }} </td>
+                {% endfor %}
+            </tr>
+        
+
+            <tr>
+                <th>Price/num of Book</th>
+                {% for book in price_per_books %}
+                    <td> {{ book }} </td>
+                {% endfor %}
+            </tr>
+
+            <tr>
+                <th >Total</th>
+                <td colspan= "12" > {{ total_price }}</td>
+            </tr>
+
+        </table>
+
+    {% else %}
+
+        <p id="empty">
+            Your cart is empty 
+        </p>
+    {% endif %}
+
+
+
+    <p>
+        <a href="{{ url_for('checkout')}}" >Go to checkout </a>
+    </p>
+
+{% endblock %}

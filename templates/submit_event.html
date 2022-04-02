@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    <h1> Submit Event </h1>
+
+    <form action="" method="POST" novalidate>
+
+        
+
+        {{ form.hidden_tag() }}
+        {{ form.event_name.label }}
+        {{ form.event_name() }}
+
+        {% for error in form.event_name.errors %}
+            {{ error }}
+        {% endfor %}
+
+        <br/>
+
+        {{ form.event_date.label }}
+        {{ form.event_date() }}
+
+        {% for error in form.event_date.errors %}
+            {{ error }}
+        {% endfor %}
+
+        <br />
+
+        <img src="{{ url_for('static', filename = 'bonus.png') }} " alt="bonus points?" />
+
+        {{ form.captcha.label }}
+        {{ form.captcha() }}
+
+        {% for error in form.captcha.errors %}
+            {{ error }}
+        {% endfor %}
+
+        <br/>
+
+
+        {{ form.submit() }}
+
+
+    </form>
+    
+    <p>
+        {{ message }}
+    </p>
+
+
+
+{% endblock %}

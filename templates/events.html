@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    <h1>Upcoming Events</h1>
+
+    <table>
+        <tr>
+            <th>Event</th>
+            <th>Date</th>
+        </tr>
+        {% for event in events %}
+            <tr>
+                <td>{{ event["event_name"] }}</td> 
+                <td>{{ event["event_date"] }}</td>
+            </tr>
+        {% endfor %}
+
+    </table>
+
+    <p>
+        If you are registered, and want to host an event, submit your idea <a href="{{ url_for('submit_event') }}">here</a>
+    </p>
+
+
+
+
+
+
+{% endblock %}

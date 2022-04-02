@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    <form id="first_form" action="" method="POST" novalidate>
+
+        <h1> Register</h1>
+
+        {{ form.hidden_tag() }}
+        {{ form.user_name.label }}
+        {{ form.user_name() }}
+
+        {% for error in form.user_name.errors %}
+            {{ error }}
+        {% endfor %}
+
+        <br/>
+
+        {{ form.email.label }}
+        {{ form.email() }}
+
+        {% for error in form.email.errors %}
+            {{ error }}
+        {% endfor %}
+
+        <br/>
+        {{ form.password.label }}
+        {{ form.password() }}
+
+        {% for error in form.password.errors %}
+            {{ error }}
+        {% endfor %}
+
+        <br />
+
+        {{ form.password2.label }}
+        {{ form.password2() }}
+
+        {% for error in form.password2.errors %}
+            {{ error }}
+        {% endfor %}
+
+        <br/>
+
+        {% if session %}
+            <p>
+                Press reload if you want a new security question:
+                <br/>
+                {{ security_question }}
+                <br/>
+                {{ form.reload_q.label() }}
+                {{ form.reload_q() }}
+                {{ form.submit2() }}
+            </p>
+            
+        {% endif %}
+
+        
+
+        <br/>
+
+        {{ form.security_question_answer.label }}
+        {{ form.security_question_answer() }}
+
+        {% for error in form.security_question_answer.errors %}
+            {{ error }}
+        {% endfor %}
+
+        
+        <br/>
+
+        {{ form.submit() }}
+
+
+    </form>
+
+    
+
+
+
+    
+
+
+{% endblock %}

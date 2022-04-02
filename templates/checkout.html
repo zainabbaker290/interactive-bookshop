@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    <h1>
+        Total: {{ total_price }}
+    </h1>
+
+    <form action="" method="POST" novalidate>
+
+        {{ form2.hidden_tag() }}
+        {{ form2.discount.label }}
+        {{ form2.discount() }}
+
+        {% for error in form2.discount.errors %}
+            {{ error }}
+        {% endfor %}
+
+        <br/>
+        
+        {{ form2.submit2() }}
+
+
+    </form>
+
+
+    <form action="" method="POST" novalidate>
+
+        {{ form.hidden_tag() }}
+
+
+        {{ form.title.label }}
+        {{ form.title() }}
+
+        <br/>
+
+        {{ form.name.label }}
+        {{ form.name() }}
+
+        {% for error in form.name.errors %}
+            {{ error }}
+        {% endfor %}
+
+        <br/>
+
+        
+        {{ form.surname.label }}
+        {{ form.surname() }}
+
+        {% for error in form.surname.errors %}
+            {{ error }}
+        {% endfor %}
+
+        <br/>
+
+        
+        {{ form.address.label }}
+        {{ form.address() }}
+
+        {% for error in form.address.errors %}
+            {{ error }}
+        {% endfor %}
+
+        <br/>
+
+        {{ form.country.label }}
+        {{ form.country() }}
+
+        {% for error in form.country.errors %}
+            {{ error }}
+        {% endfor %}
+
+        <br/>
+
+        
+        {{ form.card_name.label }}
+        {{ form.card_name() }}
+
+        {% for error in form.card_name.errors %}
+            {{ error }}
+        {% endfor %}
+
+        <br/>
+
+        {{ form.card_number.label }}
+        {{ form.card_number() }}
+
+        {% for error in form.card_number.errors %}
+            {{ error }}
+        {% endfor %}
+
+        <br/>
+
+        {{ form.expired.label }}
+        {{ form.expired() }}
+
+        {% for error in form.expired.errors %}
+            {{ error }}
+        {% endfor %}
+
+        <br/>
+
+        {{ form.cvv.label }}
+        {{ form.cvv() }}
+
+        {% for error in form.cvv.errors %}
+            {{ error }}
+        {% endfor %}
+        <br/>
+
+        
+        {{ form.card_details.label }}
+        {{ form.card_details() }}
+
+        <br/>
+
+        {{ form.submit() }}
+
+        
+    </form>
+
+
+
+
+    
+
+{% endblock %}
